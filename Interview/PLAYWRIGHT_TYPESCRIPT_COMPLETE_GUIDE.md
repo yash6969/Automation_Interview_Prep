@@ -22,21 +22,6 @@
 
 ---
 
-
----
-
-> ## 📚 Learning Path — Section 1 of 14
->
-> **Pre-requisites:**
-> - You've read the Java guide OR you're starting fresh with Playwright
-> - You know what Playwright is at a high level (browser automation by Microsoft)
-> - No TypeScript experience required — this section explains why TS is Playwright's best language
->
-> **What you'll learn:**
-> Why TypeScript is Playwright's primary language and what you gain over Java.
->
-> **Where this leads →** Section 2 sets up the actual project.
-
 # Why TypeScript?
 
 Playwright was built in TypeScript. The TS version gets:
@@ -50,29 +35,6 @@ Playwright was built in TypeScript. The TS version gets:
 If you're starting fresh with Playwright, TypeScript is the recommended language.
 
 ---
-
-
----
-
-> ## 📚 Learning Path — Section 2 of 14
->
-> **Pre-requisites:**
-> - ✅ Node.js 18+ installed (`node -v` should print a version)
-> - ✅ npm available (`npm -v`)
-> - ✅ A terminal open in an empty folder
->
-> **Practical warm-up (2 minutes):**
-> Run this NOW — it creates a complete Playwright project in 30 seconds:
-> ```bash
-> npm init playwright@latest
-> ```
-> Choose: TypeScript, `tests` folder, GitHub Actions, YES install browsers.
-> Then run: `npx playwright test` — your first tests pass immediately.
->
-> **What you'll learn:**
-> Project structure, `package.json`, and npm scripts for every workflow.
->
-> **Where this leads →** Section 3 configures the project for your Superr application.
 
 # Project Setup
 
@@ -127,21 +89,6 @@ superr-playwright-ts/
 **Compare with your Selenium pom.xml:** 11 dependencies → 1 dependency. That's it.
 
 ---
-
-
----
-
-> ## 📚 Learning Path — Section 3 of 14
->
-> **Pre-requisites:**
-> - ✅ Completed Project Setup (`npm init playwright@latest` succeeded)
-> - ✅ `npx playwright test` runs the example tests successfully
->
-> **Practical warm-up (1 minute):**
-> Open the generated `playwright.config.ts` in your editor. Notice it already has browser projects, timeouts, and reporter config. We'll customize it for your Superr app.
->
-> **What you'll learn:**
-> `playwright.config.ts` (replaces 5 Selenium files), and type-safe environment config.
 
 # Configuration
 
@@ -237,25 +184,6 @@ export function getConfig(): EnvConfig {
 ```
 
 ---
-
-
----
-
-> ## 📚 Learning Path — Section 4 of 14
->
-> **Pre-requisites:**
-> - ✅ Configuration is set up with your Superr URLs
-> - ✅ You understand `async/await` (every Playwright TS call is async)
->
-> **Practical warm-up (3 minutes):**
-> Run Codegen against your login page:
-> ```bash
-> npx playwright codegen https://dev.superr.ai/login
-> ```
-> Click around. See the TypeScript code generate on the right. Copy one locator into your page object.
->
-> **What you'll learn:**
-> `BasePage`, `LoginPage`, `LMSPage`, `AdminPortalPage` — all using `getByRole()` / `getByLabel()`.
 
 # Page Objects
 
@@ -411,29 +339,6 @@ export class AdminPortalPage extends BasePage {
 
 ---
 
-
----
-
-> ## 📚 Learning Path — Section 5 of 14
->
-> **Pre-requisites:**
-> - ✅ Page objects from Section 4 are created in your `pages/` folder
-> - ✅ You understand the locator strategy (`getByRole` > `getByLabel` > `getByTestId`)
->
-> **Practical warm-up (2 minutes):**
-> Write a minimal test to verify the pattern:
-> ```typescript
-> import { test, expect } from '@playwright/test';
-> test('smoke', async ({ page }) => {
->   await page.goto('https://dev.superr.ai/login');
->   await expect(page).toHaveTitle(/Superr/);
-> });
-> ```
-> Run it: `npx playwright test --headed`. Watch it work.
->
-> **What you'll learn:**
-> Complete `lms.spec.ts` and `admin.spec.ts` with all test scenarios from your Selenium suite.
-
 # Tests
 
 ## lms.spec.ts
@@ -529,18 +434,6 @@ test.describe('Admin Portal', () => {
 
 ---
 
-
----
-
-> ## 📚 Learning Path — Section 6 of 14
->
-> **Pre-requisites:**
-> - ✅ Tests from Section 5 exist in your `tests/` folder
-> - ✅ At least one test passes when you run `npx playwright test`
->
-> **What you'll learn:**
-> Every CLI command: headed mode, debug mode, UI mode, grep filtering, browser selection, env switching, codegen, reports, and trace viewing.
-
 # Running Tests
 
 ```bash
@@ -580,18 +473,6 @@ npx playwright show-trace test-results/trace.zip
 
 ---
 
-
----
-
-> ## 📚 Learning Path — Section 7 of 14
->
-> **Pre-requisites:**
-> - ✅ You've read the Java guide OR written Playwright Java code
-> - ✅ You've now written the same tests in TypeScript
->
-> **What you'll learn:**
-> Side-by-side comparison: test runner, config, assertions, fixtures, parallelism, reporting, and dependency count.
-
 # Key Differences from Java
 
 | Aspect | Java | TypeScript |
@@ -608,17 +489,6 @@ npx playwright show-trace test-results/trace.zip
 
 ---
 
-
----
-
-> ## 📚 Learning Path — Section 8 of 14
->
-> **Pre-requisites:**
-> - ✅ Written 3+ tests in TypeScript
->
-> **What you'll learn:**
-> 8 rules for professional Playwright TypeScript: async/await, expect vs assert, describe blocks, beforeEach, tags, goto not navigate, storageState, toBeVisible not isVisible.
-
 # Best Practices
 
 1. **Use `async/await`** — every Playwright call is async in TypeScript
@@ -631,17 +501,6 @@ npx playwright show-trace test-results/trace.zip
 8. **Use `toBeVisible()` not `isVisible()`** — the assertion auto-retries, the method doesn't
 
 ---
-
-
----
-
-> ## 📚 Learning Path — Section 9 of 14
->
-> **Pre-requisites:**
-> - ✅ Read and practiced the framework
->
-> **What you'll learn:**
-> 5 TypeScript-specific interview questions on fixtures, parallelism, storageState, and UI Mode.
 
 # Interview Questions
 
@@ -663,316 +522,3 @@ A: `npx playwright test --ui` opens a visual test runner where you can watch tes
 ---
 
 *Generated for the Superr QA team — Playwright TypeScript edition.*
-
----
-
-# ADDENDUM: Gaps Covered
-
----
-
-
----
-
-> ## 📚 Learning Path — Section 10 of 14 (Advanced)
->
-> **Pre-requisites:**
-> - ✅ Basic tests are running
-> - ✅ You want to learn storageState, network mocking, multi-tab, HAR, and API testing
->
-> **Practical warm-up (2 minutes):**
-> Try network blocking to see the power of `page.route()`:
-> ```typescript
-> test('fast load', async ({ page }) => {
->   await page.route('**/*.{png,jpg}', route => route.abort());
->   await page.goto('https://dev.superr.ai');
->   // Notice: page loads faster with no images!
-> });
-> ```
->
-> **What you'll learn:**
-> StorageState authentication (login once, reuse everywhere), API mocking, multiple tabs, HAR recording, and `request` fixture for API testing.
-
-# Advanced Playwright Concepts (TypeScript)
-
-## Storage State & Authentication
-
-Login once, save the session, reuse across all tests:
-
-```typescript
-// global-setup.ts — runs ONCE before all tests
-import { chromium, FullConfig } from '@playwright/test';
-import { getConfig } from './config/env.config';
-
-async function globalSetup(config: FullConfig) {
-  const cfg = getConfig();
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-
-  await page.goto(cfg.url);
-  await page.getByLabel('Email').fill(cfg.lms.username);
-  await page.getByLabel('Password').fill(cfg.lms.password);
-  await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.waitForURL('**/dashboard**');
-
-  // Save session to file
-  await page.context().storageState({ path: 'auth/lms-session.json' });
-  await browser.close();
-}
-
-export default globalSetup;
-```
-
-```typescript
-// playwright.config.ts — reference the setup
-export default defineConfig({
-  globalSetup: require.resolve('./global-setup'),
-  projects: [
-    {
-      name: 'authenticated',
-      use: { storageState: 'auth/lms-session.json' },
-    },
-  ],
-});
-```
-
-Now every test in the "authenticated" project starts already logged in. No login page needed.
-
-## Network Interception / API Mocking
-
-```typescript
-test('mock classes API', async ({ page }) => {
-  // Mock the API before navigating
-  await page.route('**/api/classes', route =>
-    route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify([{ id: 1, name: 'Class 6 Dance' }]),
-    })
-  );
-
-  await page.goto('/dashboard');
-  await expect(page.getByText('Class 6 Dance')).toBeVisible();
-});
-
-// Block images for faster tests
-test('block images', async ({ page }) => {
-  await page.route('**/*.{png,jpg,jpeg,gif,svg}', route => route.abort());
-  await page.goto('/dashboard');
-});
-```
-
-## Multiple Tabs & Windows
-
-```typescript
-test('handle new tab', async ({ page, context }) => {
-  // Wait for the new page (tab) to open
-  const [newPage] = await Promise.all([
-    context.waitForEvent('page'),
-    page.getByText('Open in new tab').click(),
-  ]);
-  await newPage.waitForLoadState();
-  console.log(await newPage.title());
-
-  // Both page and newPage are usable simultaneously
-  await newPage.close();
-});
-```
-
-## HAR Recording
-
-```typescript
-// Record all network traffic
-const context = await browser.newContext({
-  recordHar: { path: 'test-output/network.har' },
-});
-const page = await context.newPage();
-await page.goto('https://dev.superr.ai');
-// ... test actions ...
-await context.close(); // HAR saved on close
-```
-
-## APIRequestContext
-
-```typescript
-import { test, expect } from '@playwright/test';
-
-test('API health check', async ({ request }) => {
-  const response = await request.get('https://dev.superr.ai/api/health');
-  expect(response.status()).toBe(200);
-  const body = await response.json();
-  expect(body.status).toBe('ok');
-});
-
-test('API login and verify token', async ({ request }) => {
-  const response = await request.post('https://dev.superr.ai/api/login', {
-    data: { email: 'test@superr.ai', password: 'pass123' },
-  });
-  expect(response.ok()).toBeTruthy();
-  const { token } = await response.json();
-  expect(token).toBeTruthy();
-});
-```
-
----
-
-
----
-
-> ## 📚 Learning Path — Section 11 of 14
->
-> **Pre-requisites:**
-> - ✅ Written at least 5 tests
-> - ✅ Hit at least one "why doesn't this work?" moment
->
-> **What you'll learn:**
-> 5 mistakes every developer makes: missing `await`, wrong assertion method, hardcoded timeouts, legacy `$()` API, and flat test structure.
-
-# Common Mistakes (TypeScript)
-
-1. **Forgetting `await`** — every Playwright call is async. Missing `await` means the action doesn't execute.
-   ```typescript
-   // ❌ No await — does nothing
-   page.getByText('Submit').click();
-   // ✅ Correct
-   await page.getByText('Submit').click();
-   ```
-
-2. **Using `isVisible()` instead of `toBeVisible()`** for assertions:
-   ```typescript
-   // ❌ No auto-retry — checks once and returns boolean
-   expect(await page.getByText('Welcome').isVisible()).toBeTruthy();
-   // ✅ Auto-retries for up to 5 seconds
-   await expect(page.getByText('Welcome')).toBeVisible();
-   ```
-
-3. **Hardcoding timeouts** — trust Playwright's auto-waiting. If you need longer:
-   ```typescript
-   // Set globally in playwright.config.ts, not per test
-   expect: { timeout: 10_000 },
-   ```
-
-4. **Using `page.$()` / `page.$$()` instead of `page.locator()`** — the `$` methods are legacy Puppeteer APIs. Always use `locator()` or semantic locators.
-
-5. **Not using `test.describe`** for grouping:
-   ```typescript
-   // ❌ Flat tests — hard to organize
-   test('login test 1', ...);
-   test('login test 2', ...);
-   // ✅ Grouped
-   test.describe('Login', () => {
-     test('blank fields', ...);
-     test('invalid credentials', ...);
-   });
-   ```
-
----
-
-
----
-
-> ## 📚 Learning Path — Section 12 of 14
->
-> **Pre-requisites:**
-> - ✅ You know Selenium Java operations
-> - ✅ You've seen Playwright TypeScript code in Sections 4-5
->
-> **What you'll learn:**
-> 25 key Selenium Java → Playwright TypeScript mappings (the most-used operations).
-
-# Selenium Java → Playwright TypeScript Migration (Key Mappings)
-
-| # | Selenium Java | Playwright TypeScript |
-|---|--------------|---------------------|
-| 1 | `driver.get(url)` | `await page.goto(url)` |
-| 2 | `driver.findElement(By.id("x"))` | `page.locator('#x')` |
-| 3 | `driver.findElement(By.id("x")).sendKeys("text")` | `await page.locator('#x').fill('text')` |
-| 4 | `driver.findElement(By.id("x")).click()` | `await page.locator('#x').click()` |
-| 5 | `driver.findElement(By.id("x")).getText()` | `await page.locator('#x').textContent()` |
-| 6 | `new WebDriverWait(d, 10).until(EC.visibilityOf(el))` | `await expect(locator).toBeVisible()` |
-| 7 | `driver.switchTo().frame("name")` | `page.frameLocator('[name="name"]')` |
-| 8 | `driver.switchTo().alert().accept()` | `page.on('dialog', d => d.accept())` |
-| 9 | `driver.getWindowHandles()` | `context.pages()` |
-| 10 | `new Actions(driver).moveToElement(el).perform()` | `await locator.hover()` |
-| 11 | `new Actions(driver).doubleClick(el).perform()` | `await locator.dblclick()` |
-| 12 | `new Actions(driver).contextClick(el).perform()` | `await locator.click({ button: 'right' })` |
-| 13 | `new Actions(driver).dragAndDrop(src, tgt).perform()` | `await src.dragTo(tgt)` |
-| 14 | `new Select(el).selectByVisibleText("x")` | `await locator.selectOption('x')` |
-| 15 | `driver.manage().getCookies()` | `await context.cookies()` |
-| 16 | `driver.manage().deleteAllCookies()` | `await context.clearCookies()` |
-| 17 | `element.sendKeys(filePath)` | `await locator.setInputFiles(path)` |
-| 18 | `((JavascriptExecutor)d).executeScript("...")` | `await page.evaluate('...')` |
-| 19 | `((TakesScreenshot)d).getScreenshotAs(FILE)` | `await page.screenshot({ path: 'x.png' })` |
-| 20 | `driver.navigate().refresh()` | `await page.reload()` |
-| 21 | `driver.navigate().back()` | `await page.goBack()` |
-| 22 | `driver.getTitle()` | `await page.title()` |
-| 23 | `driver.getCurrentUrl()` | `page.url()` |
-| 24 | `driver.quit()` | `await browser.close()` |
-| 25 | `Assert.assertEquals(a, b)` | `expect(a).toBe(b)` |
-
----
-
-
----
-
-> ## 📚 Learning Path — Section 13 of 14
->
-> **Pre-requisites:**
-> - ✅ Tests are running, at least one has failed
->
-> **Practical warm-up:**
-> Run: `npx playwright test --ui` and watch your tests execute with a visual timeline. Click any action to see the DOM snapshot.
->
-> **What you'll learn:**
-> 7 debugging commands: --debug, --ui, codegen, show-report, show-trace, --headed, DEBUG=pw:api.
-
-# Debugging Guide (TypeScript)
-
-```bash
-# Visual debugger — step through every action
-npx playwright test --debug
-
-# UI Mode — watch tests run, rerun individually
-npx playwright test --ui
-
-# Generate code by recording
-npx playwright codegen https://dev.superr.ai/login
-
-# View HTML report
-npx playwright show-report
-
-# View trace from failed test
-npx playwright show-trace test-results/.../trace.zip
-
-# Headed mode
-npx playwright test --headed
-
-# Verbose logging
-DEBUG=pw:api npx playwright test
-```
-
----
-
-
----
-
-> ## 📚 Learning Path — Section 14 of 14
->
-> **Pre-requisites:**
-> - ✅ Tests work, you want them faster (especially CI)
->
-> **What you'll learn:**
-> 7 performance techniques: parallel execution, storageState, headless, route blocking, worker limits, trace-on-retry, and webServer config.
-
-# Performance Tips (TypeScript)
-
-1. **`fullyParallel: true`** in config — runs all tests concurrently
-2. **`storageState`** for auth — login once, reuse session
-3. **Headless in CI** — `headless: true` (default)
-4. **Block unnecessary resources** — `page.route('**/*.{png,jpg}', r => r.abort())`
-5. **Limit workers in CI** — `workers: process.env.CI ? 2 : undefined`
-6. **`trace: 'on-first-retry'`** — only record traces for flaky tests, not all runs
-7. **Use `webServer`** config to auto-start local dev server before tests
-
----
-
-*All gaps addressed. Both guides are now complete.*
